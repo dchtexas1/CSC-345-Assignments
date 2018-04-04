@@ -1,0 +1,28 @@
+shells are basically interfaces to make it simple to utilize system calls
+making commands is kinda like aliasing, but closer to the hardware
+
+TechShell/token1 explanation
+
+	set whitespace delimeters
+
+	ReadLine is like scanf
+
+	*mystrtok tokenizes any input and returns the first token
+
+	if the token isn't null, it checks if the token is a command
+
+forking:
+	fork() creates a new process immediately
+
+	if the pid is less than 0, fork() failed
+
+	if it is 0, execvp("/bin/ls", "ls", NULL)? I think?
+
+	if it's a normal pid, forces the parent process to wait until the child process
+	is done
+
+if you have the built-ins and fork and exec done, you're basically 50% done?
+
+set and list are also things we need
+
+fork.c and ___.c should be uploaded by now
