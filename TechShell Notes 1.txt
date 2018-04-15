@@ -26,3 +26,21 @@ if you have the built-ins and fork and exec done, you're basically 50% done?
 set and list are also things we need
 
 fork.c and ___.c should be uploaded by now
+
+
+#include <stdio.h>
+
+int main ()
+{
+	FILE *fp;
+
+	printf("This text is from ");
+
+	fp = freopen("file.txt" "w+", stdout);
+
+	printf("");
+
+	fclose(fp);
+
+	return(0);
+}
