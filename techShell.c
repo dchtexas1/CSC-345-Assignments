@@ -36,7 +36,7 @@ int lenArgs(char** args)
 	return length;
 }
 
-// Scan array for string and return index
+// Scans the array for a string and return index
 int scanFor(char** args, char* string)
 {
 	char* 	arg = args[0];
@@ -119,7 +119,6 @@ void inredirect(char** args, int inIndex)
 	args[inIndex] = NULL;
 }
 
-//TODO
 int child(char** args)
 {
 	pid_t   pid1;
@@ -149,7 +148,7 @@ int child(char** args)
 	}
 	else if (pid1 < 0)
 	{
-		//fork failed if pid1<0
+		//the fork fails if pid1<0
 		printf("Child process creation failed.");
 		exit(EXIT_FAILURE);
 	}
@@ -202,10 +201,11 @@ int cd(char* arg)
 		}
 	}
 }
+//this is where the set function should go
 /*
-int set(char x, char y, char z)
+int set(char x, char y)
 {
-	x y = z
+	x = y
 }
 */
 int execute(char** args)
@@ -242,42 +242,23 @@ int execute(char** args)
 			return printcwd();
 		}
 	}
+    //this is what should call the set function when requested in the terminal
 /*	if (strcmp(args[0], "set") == 0)
 	{
 		if(args[1] == NULL)
 		{
-			printf("Variable type not specified.");
-			return -1;
-		}
-		else
-		{
-			char x = args[1];
-			return 1;
-		}
-
-
-		if(args[2] == NULL)
-		{
 			printf("Variable name not specified.");
 			return -1;
 		}
-		else
-		{
-			char y = args[2];
-			return 1;
-		}
-		if(args[3] == NULL)
+		else if(args[2] == NULL)
 		{
 			printf("Variable value not specified.");
 			return -1;
 		}
-
 		else
 		{
-			char z = args[3];
+			char* x = args[2];
 			return 1;
-
-
 		}
 	}
 */    //Start a new process
@@ -293,7 +274,7 @@ int main()
 
 	do
 	{
-		//Want to get the current directory before and during the loop.
+		//always have the current working directory available
 		getcwd(cwd, sizeof(cwd));
 		line = input("~ ");
 		args = tok(line);
